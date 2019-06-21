@@ -15,11 +15,15 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->increments('id');
-//            $table->integer('ctg_id');
-//            $table->date('date');
-//            $table->integer('sbj_id');
+            $table->unsignedInteger('ctg_id')->index();
+            $table->date('date');
+            $table->unsignedInteger('sbj_id')->index();
             $table->unsignedInteger('tch_id')->index();
+
+
             $table->foreign('tch_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->foreign('sbj_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->foreign('ctg_id')->references('id')->on('categories')->onDelete('cascade');
 
         });
     }

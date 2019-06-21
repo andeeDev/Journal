@@ -16,7 +16,6 @@ class Clazz extends Model
 
     public function teachers(){
         return $this->belongsTo(Teacher::class);
-        //return $this->hasMany('App\Model\Teacher');
-    }
+      }
     //
 }
