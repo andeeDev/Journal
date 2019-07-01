@@ -13,11 +13,15 @@ class Group extends Model
     public $timestamps = false;
 
     public function groups(){
+        return $this->hasMany(Group::class);
+    }
+
+    public function students() {
         return $this->hasMany(Student::class);
     }
 
-    public function classes(){
-        //may cause wrong work
-        return $this->belongsToMany(Clazz::class, 'class_id');
-    }
+//    public function classes(){
+//        //may cause wrong work
+//        return $this->belongsToMany(Clazz::class, 'class_id');
+//    }
 }

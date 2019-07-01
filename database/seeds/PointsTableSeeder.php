@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Point;
 use Illuminate\Database\Seeder;
 
 class PointsTableSeeder extends Seeder
@@ -16,11 +17,22 @@ class PointsTableSeeder extends Seeder
         $groups = App\Models\Group::all();
         $i = 0;
         foreach ($clazzes as $class) {
-            if ($class->ctg_id == 0) {
-                $this->makePoints($students, $class->id, rand(0,1) ? 0.5 : 0 );
+            if ($class->ctg_id == 1) {
+                $this->makePoints($students, $class->id, rand(0,1) ? 1 : 0 );
+//                factory(App\Models\Point::class, 1)->create([
+//                    'classes_id' => $class,
+//                    'student_id' => 3,
+//                    'point' => 6
+//                ]);
             } else {
-                $students = App\Models\Student::getByGroup($groups[$i]->id);
-                $this->makePoints($students, $class->id, rand(0, 5) );
+                $s = App\Models\Student::getByGroup($groups[$i]->id);
+                $this->makePoints($s, $class->id, rand(0, 5) );
+
+//                factory(App\Models\Point::class, 1)->create([
+//                    'classes_id' => $class,
+//                    'student_id' => 4,
+//                    'point' => 7
+//                ]);
             }
             $i++;
         }

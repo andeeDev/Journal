@@ -117,6 +117,32 @@ $users = App\Models\Teacher::all();
     </tr>
     <?php endforeach; ?>
 </table>
+<?php
+        $st = App\Models\Student::find(1);
+
+        $student = App\Models\Student::find(1);
+//echo $student->where('group_id', 1)->get();
+
+//echo $st->where('id', 1)->get();
+//echo rand(0,1) ? 1 : 0;
+for($i = 0; $i < 6; $i++){
+    $groups = App\Models\Group::all();
+   // echo $groups[$i];
+    //echo $groups[$i]->id;
+    //echo
+    $s = App\Models\Student::getByGroup($groups[$i]->id);
+
+    //echo $s->plaintext."<br/>";
+    echo $s[9]->name."<br>";
+   // echo "<br>";
+}
+$q = \App\Models\Category::find(1);
+foreach ($q->classes as $cl){
+    echo $cl;
+}
+//echo $student->where('group_id', 7)->get();
+
+?>
 
 </body>
 </html>
