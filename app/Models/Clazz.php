@@ -8,11 +8,6 @@ class Clazz extends Model
 {
     protected $table = 'classes';
     public $timestamps = false;
-//
-//    public function post()
-//    {
-//
-//    }
 
     public function teachers(){
         return $this->belongsTo(Teacher::class, 'tch_id');

@@ -18,5 +18,5 @@ class Student extends Model
         $s = $student->where('group_id', $groupId)->get();
         return $s;
     }
-    //
+
 }

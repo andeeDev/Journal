@@ -8,13 +8,9 @@ class Group extends Model
 {
     public $timestamps = false;
 
-
-
     public function students() {
         return $this->hasMany(Student::class, 'group_id');
     }
-
-
 
     public function classes(){
         return $this->belongsToMany(

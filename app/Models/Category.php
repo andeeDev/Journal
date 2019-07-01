@@ -8,7 +8,6 @@ class Category extends Model
 {
     protected $table = 'categories';
     public $timestamps = false;
-    //protected $primaryKey = 'id';
 
     public function classes(){
         return $this->hasMany(Clazz::class, 'ctg_id','id');
