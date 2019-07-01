@@ -15,10 +15,5 @@ use App\Models\Teacher;
      */
     public function run() {
         factory(Teacher::class, 3)->create();
-        //DB::table('teacher')->delete();
-
-//        $arr = [[ 'name' => 'Зоя', 'surname' => 'Маслова'],
-//        ['name'=> 'Тиркусова', 'surname'=>'Надія']];
-//        Teacher::insert($arr);
     }
 }

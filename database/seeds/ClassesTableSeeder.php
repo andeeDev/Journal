@@ -15,8 +15,17 @@ class ClassesTableSeeder extends Seeder
         //$user =  Teacher::find(1);
         //$user2 = Teacher::find(2);
         $teachers = Teacher::all();
+        $categories = \App\Models\Category::all();
+        $subjects = \App\Models\Subject::all();
+        $i = 0;
+
         foreach( $teachers as $teacher) {
-            factory(Clazz::class, 2)->create(['tch_id' => $teacher->id]);
+            factory(Clazz::class, 2)->create([
+                'tch_id' => $teacher->id,
+                'ctg_id' => $categories[$i]->id,
+                'sbj_id' => $subjects[$i]
+                ]);
+            $i++;
         }
 //        $arr = [['tch_id' =>$user->id],
 //                ['tch_id' => $user->id],

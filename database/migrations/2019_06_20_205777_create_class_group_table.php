@@ -6,6 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateClassGroupTable extends Migration
 {
+    private $tableName = 'class_groups';
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreateClassGroupTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_group', function (Blueprint $table) {
+        Schema::create($this->tableName, function (Blueprint $table) {
             $table->unsignedInteger('group_id')->index();
             $table->unsignedInteger('class_id')->index();
 
@@ -29,6 +31,6 @@ class CreateClassGroupTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_group');
+        Schema::dropIfExists($this->tableName);
     }
 }
