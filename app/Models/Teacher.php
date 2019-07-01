@@ -10,6 +10,6 @@ class Teacher extends Model
     //
     public function classess()
     {
-        return $this->hasMany(Clazz::class);
+        return $this->hasMany(Clazz::class, 'tch_id');
     }
 }

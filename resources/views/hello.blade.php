@@ -133,13 +133,15 @@ for($i = 0; $i < 6; $i++){
     $s = App\Models\Student::getByGroup($groups[$i]->id);
 
     //echo $s->plaintext."<br/>";
-    echo $s[9]->name."<br>";
+    //echo $s[9]->name."<br>";
    // echo "<br>";
 }
-$q = \App\Models\Category::find(1);
-foreach ($q->classes as $cl){
-    echo $cl;
-}
+$q = \App\Models\Student::all();
+$arr = $q[0]->value('name');
+//setlocale(LC_ALL, 'uk_UA.KOI8-U');
+echo '<h5>'.$arr.'</h5>';
+//$a = (array)$q;
+//echo ;
 //echo $student->where('group_id', 7)->get();
 
 ?>

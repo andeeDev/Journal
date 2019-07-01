@@ -26,4 +26,10 @@ class Clazz extends Model
         return $this->belongsTo(Subject::class, 'sbj_id');
     }
 
+    public function groups() {
+        return $this->belongsToMany(Group::class, 'class_groups', 'group_id',
+            'class_id');
+
+    }
+
 }
