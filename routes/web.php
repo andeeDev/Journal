@@ -15,5 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/andee', function () {
-    return view('hello', ['name' => 'Samantha']);
+    return view('hello');
 });

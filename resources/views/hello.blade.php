@@ -118,33 +118,20 @@ $users = App\Models\Teacher::all();
     <?php endforeach; ?>
 </table>
 <?php
-        $st = App\Models\Student::find(1);
 
-        $student = App\Models\Student::find(1);
-//echo $student->where('group_id', 1)->get();
+    //$student = new \App\Models\Student();
+    //$student->name = "victor";
+//use App\Models\Student;
 
-//echo $st->where('id', 1)->get();
-//echo rand(0,1) ? 1 : 0;
-for($i = 0; $i < 6; $i++){
-    $groups = App\Models\Group::all();
-   // echo $groups[$i];
-    //echo $groups[$i]->id;
-    //echo
-    $s = App\Models\Student::getByGroup($groups[$i]->id);
+//$student = new \App\Models\Student();
+//$student->fill(['surname' => 'Shmeedt1111',
+          //      'name' => 'mike111',
+          //    'group_id' => 4]);
 
-    //echo $s->plaintext."<br/>";
-    //echo $s[9]->name."<br>";
-   // echo "<br>";
-}
-$q = \App\Models\Student::all();
-$arr = $q[0]->value('name');
-//setlocale(LC_ALL, 'uk_UA.KOI8-U');
-echo '<h5>'.$arr.'</h5>';
-//$a = (array)$q;
-//echo ;
-//echo $student->where('group_id', 7)->get();
+
+//$student->delete();
 
 ?>
-
+<button style="margin:40px;">Hi</button>
 </body>
 </html>
