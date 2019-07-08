@@ -30,10 +30,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(  $students  as $st )
+                                @foreach( $students  as $st )
                                     <tr class="text-center">
                                         <td class="" style="text-align:left">{{$st->surname.' '.$st->name }}</td>
-                                        <td>
+                                        @foreach( $classes as $class )
+                                            <td>
+                                                <div><input type="text" maxlength="2"></div>
+                                            </td>
+                                        {{--<td>
                                             <div><input type="text" maxlength="2"></div>
                                         </td>
                                         <td>
@@ -77,7 +81,7 @@
                                         </td>
                                         <td>
                                             <div><input type="text" maxlength="2"></div>
-                                        </td>
+                                        </td>--}}
                                     </tr>
                                 @endforeach
                             </tbody>

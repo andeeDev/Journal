@@ -1,10 +1,7 @@
 <?php
 
 
-Route::get('/journal/{id_sub}/{ig_grp}',  'JournalController@journal');
-
-
-
+Route::get('/journal/{id_sbj}/{categ_sbj}/{ig_grp}',  'JournalController@journal');
 
 
 
