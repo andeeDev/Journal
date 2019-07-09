@@ -14,7 +14,7 @@ class Student extends Model
     }
 
     public function classes() {
-        return $this->hasMany(Clazz::class)->using(Point::class)->withPivot('point');
+        return $this->belongsToMany(Clazz::class, 'points', 'classes_id', 'student_id')->using(Point::class)->withPivot('point');
     }
 
     public static function getByGroup($groupId) {

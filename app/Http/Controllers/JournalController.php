@@ -10,15 +10,30 @@ class JournalController extends Controller
 {
     public function journal($id_sbj, $categ_sbj, $id_grp, Request $request)
     {
-        $students = Group::find($id_grp)->students();
+        $students = Group::find($id_grp)->students()->get();
         echo '<pre>';
-        var_dump($students);
+        //var_dump($students);
+        $i = 1;
         foreach ( $students as $student ) {
-            $points = $student->classes()->where([
+            //echo $i++;
+            $student->classes()->where([
                 ['tch_id', '=', 1],
                 ['ctg_id', '=', $categ_sbj],
-            ])->get();
-            var_dump($points);
+                ['sbj_id', '=', $id_sbj],
+            ]);
+            //echo $student->name . ' ' . $student->id .'<br>';
+            var_dump($student->classes->items);
+            exit;
+            foreach($student->classes as $clazz) {
+                var_dump($clazz->pivot);
+                /*foreach ($clazz as $point) {
+                    var_dump($point);
+                    exit;
+
+                }*/
+                //exit();
+
+            };
         }
         echo 'yes';
         exit;
