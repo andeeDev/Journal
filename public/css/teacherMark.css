@@ -1,0 +1,78 @@
+.edit-table tr td {
+  padding: 0;
+  height: 1px;
+}
+
+.edit-table tr td:focus-within {
+  outline: 1px solid cornflowerblue;
+}
+
+.edit-table tr td div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.edit-table tr th:first-child,
+.edit-table tr td:first-child {
+  min-width: 240px !important;
+  padding: 0.25rem;
+}
+
+.edit-table input[type="text"] {
+  height: 100%;
+  width: 3rem;
+  margin: 0 auto;
+  display: block;
+  padding: 0 0 0 0;
+  border: none;
+  background-color: inherit !important;
+  outline: none;
+  box-shadow: none !important;
+  text-align: center;
+}
+
+.top-bar.cabinet h1 {
+  display: inline-block !important;
+  padding-left: 0.5rem;
+}
+
+.top-bar.cabinet .dropdown {
+  margin-top: 0.8rem;
+}
+
+.table-for-mobile td {
+  padding: 0;
+  height: 1px;
+}
+
+.table-for-mobile td:focus-within {
+  outline: 1px solid cornflowerblue;
+}
+
+.table-for-mobile td:first-child {
+  padding: 0.5rem 0.625rem 0.625rem;
+  font-size: 1rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.table-for-mobile div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.table-for-mobile input[type="text"] {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  border: none;
+  background-color: #fafafa !important;
+  box-shadow: none;
+}
+
+.table-for-mobile input[type="text"]:focus {
+  box-shadow: none !important;
+}

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
 
 class Student extends Model
 {
@@ -14,10 +13,15 @@ class Student extends Model
        return $this->belongsTo(Group::class, 'group_id', 'id');
     }
 
+    public function classes() {
+        return $this->belongsToMany(Clazz::class, 'points', 'classes_id', 'student_id')->using(Point::class)->withPivot('point');
+    }
+
     public static function getByGroup($groupId) {
         $student = Student::find(1);
         $s = $student->where('group_id', $groupId)->get();
         return $s;
     }
+
 
 }

@@ -27,4 +27,8 @@ class Clazz extends Model
 
     }
 
+    public function points() {
+        return $this->hasMany(Point::class, 'classes_id');
+    }
+
 }
