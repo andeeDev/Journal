@@ -14,6 +14,6 @@ use App\Models\Teacher;
      * @return void
      */
     public function run() {
-        factory(Teacher::class, 2)->create();
+        factory(Teacher::class, 1)->create();
     }
 }

@@ -1,5 +1,4 @@
-    @include('header')
-
+@include('header')
     <main class="page">
         <div class="row expanded">
             <div class="small-12 columns">
@@ -91,13 +90,5 @@
             </div>
         </div>
     </main>
-    @include('footer')
+@include('footer')
 
-
-    <script type="text/javascript" src="{{ asset('/js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/foundation.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/custom/change_type_of_table.js') }}"></script>
-
-
-</body>
-</html>
