@@ -18,32 +18,23 @@ class PointsTableSeeder extends Seeder
         $i = 0;
         foreach ($clazzes as $class) {
             if ($class->ctg_id == 1) {
-                $this->makePoints($students, $class->id, rand(0,1) ? 1 : 0 );
-//                factory(App\Models\Point::class, 1)->create([
-//                    'classes_id' => $class,
-//                    'student_id' => 3,
-//                    'point' => 6
-//                ]);
+                // points for all students on lecture
+                $this->makePoints($students, $class->id,  $class->ctg_id);
             } else {
+                // points for students in group
                 $s = App\Models\Student::getByGroup($groups[$i]->id);
-                $this->makePoints($s, $class->id, rand(0, 5) );
-
-//                factory(App\Models\Point::class, 1)->create([
-//                    'classes_id' => $class,
-//                    'student_id' => 4,
-//                    'point' => 7
-//                ]);
+                $this->makePoints($s, $class->id, $class->ctg_id);
             }
             $i++;
         }
     }
 
-    private function makePoints($students, $class_id, $point) {
+    private function makePoints($students, $class_id, $ctg_id) {
         foreach ($students as $student) {
             factory(App\Models\Point::class, 1)->create([
                 'classes_id' => $class_id,
                 'student_id' => $student,
-                'point' => $point
+                'point' => $ctg_id == 1  ? rand(0, 10) / 10  : rand(0, 5)
             ]);
         }
 

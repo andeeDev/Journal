@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Point extends Pivot
 {
-    public $timestamps = false;
+    public $table = 'points';
 
     public function students() {
         return $this->belongsTo(Student::class, 'student_id');

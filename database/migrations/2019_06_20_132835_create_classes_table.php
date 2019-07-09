@@ -16,7 +16,7 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('ctg_id')->index();
-            $table->date('date');
+            $table->dateTime('datetime');
             $table->unsignedInteger('sbj_id')->index();
             $table->unsignedInteger('tch_id')->index();
 
