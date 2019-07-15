@@ -29,13 +29,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach( $students  as $st )
+                               {{-- @foreach( $students  as $st )--}}
                                     <tr class="text-center">
-                                        <td class="" style="text-align:left">{{$st->surname.' '.$st->name }}</td>
+                                        <td class="" style="text-align:left">{{--$st->surname.' '.$st->name }}</td>
                                         @foreach( $classes as $class )
                                             <td>
                                                 <div><input type="text" maxlength="2"></div>
                                             </td>
+
+
+
+
                                         {{--<td>
                                             <div><input type="text" maxlength="2"></div>
                                         </td>
@@ -82,7 +86,7 @@
                                             <div><input type="text" maxlength="2"></div>
                                         </td>--}}
                                     </tr>
-                                @endforeach
+{{--                                @endforeach--}}
                             </tbody>
                         </table>
                     </div>
@@ -90,5 +94,7 @@
             </div>
         </div>
     </main>
+
+
 @include('footer')
 

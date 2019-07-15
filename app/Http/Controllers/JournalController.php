@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Models\Student;
 use App\Repositories\Criteria\StudentsByGroup;
+use App\Repositories\test2\Repository;
 use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
+    public $repository;
+
+
+    public function __construct(Repository $repository){
+        $this->repository = $repository;
+    }
 
     public function journal($id_sbj, $categ_sbj, $id_grp, Request $request)
     {
         /*$students = Group::find($id_grp)->students()->get();*/
-        $test = Student::all()->pushCriteria(new StudentsByGroup());
+        //$test = Student::all()->pushCriteria(new StudentsByGroup());
         $i = 0;
-        dd($test);
+        //dd($test);
         /*foreach ($students as $student) {
             dump($student->classes()->get());*/
 
@@ -35,6 +42,8 @@ class JournalController extends Controller
         }*/
 
 
-        //return view('journal')->with(['students'=>$students->get(), 'classes;' => $classes ]);
+        //return view('journal')->with(['students'=> $this->repository->, 'classes;' => $classes ]);
+        return view('journal')->with( ['a' => $this->repository] );// $this->repository->findAllGroupsById($id_grp)
+        //, 'groups' => $this->repository->findAllStudentsById($id_grp)
     }
 }
