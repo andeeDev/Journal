@@ -27,8 +27,8 @@ class Clazz extends Model
 
     }
 
-    public function points() {
-        return $this->hasMany(Point::class, 'classes_id');
+    public function students() {
+        return $this->belongsToMany(Student::class,Point::class , 'student_id', 'classes_id');
     }
 
 }

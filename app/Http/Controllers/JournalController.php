@@ -45,8 +45,9 @@ class JournalController extends Controller
         //return view('journal')->with(['students'=> $this->repository->, 'classes;' => $classes ]);
         return view('journal')->with( ['groupName' => $this->repository->getGroup($id_grp),
                                             'dates' => $this->repository->findClassesDates($categ_sbj, $id_sbj, 1),
-                                            'studentAndMark'=> $this->repository->getStudentsWithMarks($id_grp)
+
             ] );// $this->repository->findAllGroupsById($id_grp)
+        //'studentAndMark'=> $this->repository->getStudentsWithMarks($id_grp)
         //, 'groups' => $this->repository->findAllStudentsById($id_grp)
     }
 }

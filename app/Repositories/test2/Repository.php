@@ -39,9 +39,11 @@ class Repository
         return $this->groupsRepository->findById($id);
     }
 
-    public function getStudentsWithMarks($id){
-       return $this->studentRepo->getStudentsByGroupId($id);
-    }
+    /*public function getStudentsWithMarks($id_group){
+       //return $this->studentRepo->findAll()::with('points')->where('group_id', '=', $id_group)->get();
+       //return $this->studentRepo->getStudentsByGroupId($id);
+        return $this->studentRepo->getStudentsWithMarks($id_group);
+   }*/
 
 
 }

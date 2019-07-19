@@ -12,7 +12,18 @@ class PointsTableSeeder extends Seeder
      */
     public function run()
     {
-        $clazzes = App\Models\Clazz::all();
+        $classes = App\Models\Clazz::all();
+
+        foreach ($classes as $class) {
+            if($class->ctg_id == 1){
+                $students = App\Models\Student::all();
+                App\Models\Student::find(1)->classes()->save($class, ['point' => 3]);
+            }
+        }
+
+
+
+        /*$clazzes = App\Models\Clazz::all();
         $students = App\Models\Student::all();
         $groups = App\Models\Group::all();
         $i = 0;
@@ -26,10 +37,10 @@ class PointsTableSeeder extends Seeder
                 $this->makePoints($s, $class->id, $class->ctg_id);
             }
             $i++;
-        }
+        }*/
     }
 
-    private function makePoints($students, $class_id, $ctg_id) {
+    /*private function makePoints($students, $class_id, $ctg_id) {
         foreach ($students as $student) {
             factory(App\Models\Point::class, 1)->create([
                 'classes_id' => $class_id,
@@ -37,6 +48,5 @@ class PointsTableSeeder extends Seeder
                 'point' => $ctg_id == 1  ? rand(0, 10) / 10  : rand(0, 5)
             ]);
         }
-
-    }
+    }*/
 }
