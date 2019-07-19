@@ -24,7 +24,8 @@ class Student extends Model
     }
 
     public function classes(){
-        return $this->belongsToMany(Clazz::class, Point::class, 'classes_id', 'student_id');
+        return $this->belongsToMany(Clazz::class, Point::class, 'classes_id', 'student_id')
+            ->using(Point::class)->withPivot('point', 'created_at', 'updated_at');//
     }
 
     public static function getByGroup($groupId) {

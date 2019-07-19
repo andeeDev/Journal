@@ -21,7 +21,7 @@ class ClassesTableSeeder extends Seeder
         $i = 0;
 
         foreach( $teachers as $teacher) {
-            factory(Clazz::class, 2)->create([
+            factory(Clazz::class, 100)->create([
                 'tch_id' => $teacher->id,
                 'ctg_id' => $categories[$i]->id,
                 'sbj_id' => $subjects[$i]

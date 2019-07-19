@@ -18,7 +18,7 @@ class CreatePointsTable extends Migration
             $table->unsignedInteger('classes_id')->index();
             $table->unsignedInteger('student_id')->index();
             $table->timestamps();
-            $table->float('point');
+            $table->float('point')->nullable();
 
             $table->foreign('classes_id')->references('id')->on('classes')->onDelete('cascade');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');

@@ -22,10 +22,11 @@ class StudentRepositoryImpl implements StudentRepository
         $this->model::all();
     }
 
-    /*public function getStudentsWithMarks($id_group){
-        return $this->model::with('points', 'classes' )->where('group_id', '=', $id_group)->get();
+    public function getStudentsWithMarks($id_group){
+        return $this->model::with('classes')->where('group_id', '=', $id_group)->get();
+        //return $this->model::with('points', 'classes' )->where('group_id', '=', $id_group)->get();
         //return $this->studentRepo->getStudentsByGroupId($id);
-    }*/
+    }
 
 
     public function getStudentsByGroupId($id)

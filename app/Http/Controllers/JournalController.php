@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\Student;
-use App\Repositories\Criteria\StudentsByGroup;
+
+use App\Repositories\test2\BaseImplementations\StudentRepositoryImpl;
 use App\Repositories\test2\Repository;
 use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
     public $repository;
+    public $studentRepositoryImpl;
 
-
-    public function __construct(Repository $repository){
+    public function __construct(Repository $repository, StudentRepositoryImpl $studentRepositoryImpl){
         $this->repository = $repository;
+        $this->studentRepositoryImpl = $studentRepositoryImpl;
     }
 
     public function journal($id_sbj, $categ_sbj, $id_grp, Request $request)
@@ -43,10 +45,11 @@ class JournalController extends Controller
 
 
         //return view('journal')->with(['students'=> $this->repository->, 'classes;' => $classes ]);
-        return view('journal')->with( ['groupName' => $this->repository->getGroup($id_grp),
-                                            'dates' => $this->repository->findClassesDates($categ_sbj, $id_sbj, 1),
-
-            ] );// $this->repository->findAllGroupsById($id_grp)
+        return view('journal')->with(
+                ['groupName' => $this->repository->getGroup($id_grp),
+                    'dates' => $this->repository->findClassesDates($categ_sbj, $id_sbj, 1),
+                    'studentAndMark' => $this->studentRepositoryImpl->getStudentsWithMarks($id_grp)
+                    ]);// $this->repository->findAllGroupsById($id_grp)
         //'studentAndMark'=> $this->repository->getStudentsWithMarks($id_grp)
         //, 'groups' => $this->repository->findAllStudentsById($id_grp)
     }
