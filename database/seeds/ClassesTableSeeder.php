@@ -18,15 +18,17 @@ class ClassesTableSeeder extends Seeder
         $teachers = Teacher::all();
         $categories = App\Models\Category::all();
         $subjects = App\Models\Subject::all();
-        $i = 0;
 
-        foreach( $teachers as $teacher) {
-            factory(Clazz::class, 100)->create([
-                'tch_id' => $teacher->id,
-                'ctg_id' => $categories[$i]->id,
-                'sbj_id' => $subjects[$i]
+
+
+        for($i = 0; $i < 60;  $i++){
+            factory(Clazz::class, 1)->create([
+                'tch_id' => $teachers->random(1)->first()->id,
+                'ctg_id' => $categories->random(1)->first()->id,
+                'sbj_id' => $subjects->random(1)->first(),
+                'datetime' =>  date("Y-m-d H:i:s", strtotime('-'.rand(0,30).'days', time()))
             ]);
-            $i++;
         }
+
     }
 }

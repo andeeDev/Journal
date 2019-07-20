@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Clazz::class, function (Faker $faker, $arr) {
     return [
-        'datetime' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())
+
     ];
 });
 

@@ -8,12 +8,7 @@ use Illuminate\Database\Seeder;
 
 class PointsTableSeeder extends Seeder
 {
-    public $faker;
 
-    public function __construct(Faker\Generator $faker)
-    {
-        $this->faker = $faker;
-    }
 
     /**
      * Run the database seeds.
@@ -22,7 +17,7 @@ class PointsTableSeeder extends Seeder
      */
     public function run()
     {
-
+        $faker = \Faker\Factory::create();
 
         $classes = App\Models\Clazz::all();
         foreach ($classes as $class) {
@@ -52,22 +47,23 @@ class PointsTableSeeder extends Seeder
 
 
         }
-            for ($i = 1; $i <= 60; $i++){
-                for($j = 0; $j < 10; $j++) {
-                    $temp = App\Models\Student::find($i)->classes()->attach(
+            for ($i = 1; $i <= Student::all()->count(); $i++){
+                /*for($j = 0; $j < 10; $j++) {*/
+                    $faker = Faker\Factory::create();
+                    $temp = App\Models\Student::find($i)->classes()->sync(
                         [$i => ['point' => rand(0, 5),
-                            'created_at' => Carbon::createFromTimeStamp($this->faker->dateTimeBetween('-4 month', '-3 month')->getTimestamp()),
-                            'updated_at' => Carbon::createFromTimeStamp($this->faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())]
-                        ]);
-                }
+                            'created_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,30))->toDateTimeString(),
+                            'updated_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,28))->toDateTimeString()
+                                ]
+                        ]
+                    );
+                /*}*/
             }
-            for ($i = 1; $i <= 60; $i++) {
-                App\Models\Student::find($i)->classes()->attach(
-                    [$i => [
-                        'created_at' => Carbon::createFromTimeStamp($this->faker->dateTimeBetween('-4 month', '-3 month')->getTimestamp()),
-                        'updated_at' => Carbon::createFromTimeStamp($this->faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())]
-                    ]);
 
+            for ($i = 1; $i <= Student::all()->count()-50; $i++) {
+                $faker = Faker\Factory::create();
+                App\Models\Student::find($i)->classes()->attach([$i => ['created_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,28))->toDateTimeString(),
+                    'updated_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,18))->toDateTimeString()]]);
             }
     }
 
