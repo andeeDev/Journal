@@ -9,7 +9,7 @@ class Student extends Model
     public $timestamps = false;
     protected $fillable = ['name', 'surname', 'group_id'];
 
-    protected $with = ['classes'];
+    //protected $with = ['classes'];
 
     public function groups() {
        return $this->belongsTo(Group::class, 'group_id', 'id');
@@ -24,7 +24,7 @@ class Student extends Model
     }
 
     public function classes(){
-        return $this->belongsToMany(Clazz::class, Point::class, 'classes_id', 'student_id')
+        return $this->belongsToMany(Clazz::class, Point::class, 'student_id', 'classes_id')
             ->using(Point::class)->withPivot('point', 'created_by', 'updated_by');//
     }
 

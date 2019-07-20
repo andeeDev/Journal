@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Clazz;
 use App\Models\Point;
 use App\Models\Student;
 use Carbon\Carbon;
@@ -18,20 +19,32 @@ class PointsTableSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-
+        $students = App\Models\Student::all();
         $classes = App\Models\Clazz::all();
+
+        foreach ($classes as $class){
+            for ($i = 1; $i <= \App\Models\Student::all()->count(); $i++) {
+                DB::table('points')->insert(['classes_id' => $class->id, 'student_id' => $i,
+                    'point' => rand(0, 5),
+                    'created_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-4 month', '-3 month')->getTimestamp()),
+                    'updated_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())
+                ]);
+            }
+        }
+
         foreach ($classes as $class) {
-            if ($class->ctg_id == 1){
-                $students = App\Models\Student::all();
-                foreach ($students as $student) {
-                    /*$student->classes()->attach($class->id,
-                        ['point' => 3,
-                            'classes_id' => $class->id,
-                            'created_at' => Carbon::createFromTimeStamp($this->faker->dateTimeBetween('-4 month', '-3 month')->getTimestamp()),
-                            'updated_at' => Carbon::createFromTimeStamp($this->faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())
-                        ]);*/
-                    }
-            } else {
+            foreach ($students as $student) {
+                /*$student->classes()->attach($class->id,
+                    ['point' => 3,
+
+                        'created_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-4 month', '-3 month')->getTimestamp()),
+                        'updated_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())
+                    ]);//'classes_id' => $class->id,*/
+            }
+        }
+
+
+
                 //$students = App\Models\Student::where('group_id', '=', '2')->get();
 
                     //}
@@ -46,26 +59,30 @@ class PointsTableSeeder extends Seeder
                 }
 
 
-        }
+
+        /*$faker = Faker\Factory::create();
+        $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now');
+
             for ($i = 1; $i <= Student::all()->count(); $i++){
-                /*for($j = 0; $j < 10; $j++) {*/
+                $rand = rand(1, 3);
                     $faker = Faker\Factory::create();
-                    $temp = App\Models\Student::find($i)->classes()->sync(
-                        [$i => ['point' => rand(0, 5),
-                            'created_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,30))->toDateTimeString(),
-                            'updated_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,28))->toDateTimeString()
-                                ]
+                    $temp = App\Models\Student::find($i)->classes()->attach(
+                        [$i => ['point' => rand(0, 5)
+                            'created_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now')->getTimestamp())->format('Y-m-d'),
+                            'updated_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now')->getTimestamp())->format('Y-m-d')
+                                ],
+                            $rand => ['point' => 6],
+                            $rand + 1 =>  ['point' => 7]
                         ]
                     );
-                /*}*/
-            }
+            }*/
 
-            for ($i = 1; $i <= Student::all()->count()-50; $i++) {
+            /*for ($i = 1; $i <= Student::all()->count(); $i++) {
                 $faker = Faker\Factory::create();
                 App\Models\Student::find($i)->classes()->attach([$i => ['created_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,28))->toDateTimeString(),
                     'updated_by' => \Carbon\Carbon::createFromDate(2019,rand(1, 6),rand(1,18))->toDateTimeString()]]);
-            }
-    }
+            }*/
+
 
 
 

@@ -21,12 +21,15 @@ class ClassesTableSeeder extends Seeder
 
 
 
-        for($i = 0; $i < 60;  $i++){
+
+
+        for($i = 0; $i < 20;  $i++){
             factory(Clazz::class, 1)->create([
                 'tch_id' => $teachers->random(1)->first()->id,
                 'ctg_id' => $categories->random(1)->first()->id,
-                'sbj_id' => $subjects->random(1)->first(),
-                'datetime' =>  date("Y-m-d H:i:s", strtotime('-'.rand(0,30).'days', time()))
+                'sbj_id' => $subjects->random(1)->first()->id,
+                'datetime' =>  $faker->dateTimeBetween($startDate = '-1 years', $endDate = '-5 days')
+                    //date("Y-m-d H:i:s", strtotime('-'.rand(0,30).'days', time()))
             ]);
         }
 
