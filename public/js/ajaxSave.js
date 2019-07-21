@@ -51,22 +51,42 @@ function get() {
             check_pattern_of_datauri(e.target.dataset.uri);//
             //log(obj);
             const ajax = new XMLHttpRequest();
+            ajax.dataType = 'json';
             //ajax.responseType = 'json';
             ajax.onload = () => {
-                log( ajax.getAllResponseHeaders());
-                log(ajax.responseText);
+                //log( ajax.getAllResponseHeaders());
+                log(ajax.response);
+                //log(ajax.getAllResponseHeaders())
+                log(ajax.responseText)
+
             };
             /*ajax.onreadystatechange = () => {
                 if(ajax.onreadystatechange === 4 && ajax.status === 200){
                     console.log(ajax);
                 }
             };*/
-            console.log(ajax);
+            console.log(obj);
+
+
             ajax.open('POST', '/save');
             ajax.setRequestHeader('X-CSRF-TOKEN' , select('meta[name="csrf-token"]').content) ;
-            ajax.send(JSON.stringify(obj));
+            //ajax.setRequestHeader('dataType', 'json');
+            ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            ajax.contentType = "json";
+                ajax.setRequestHeader('processData',  'false');
+            //console.log(JSON.stringify(obj));
+            ajax.send(JSON.stringify(obj));//
             //log();
+           /* $.ajax({
+                url : '/save',
+                type : "post",
+                async : true,
+                data: {_token: select('meta[name="csrf-token"]')},
+                success : function(data) {
+                    console.log("data = ", data);
 
+                }
+            });*/
 
         }
         //log(e.target);

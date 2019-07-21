@@ -9,7 +9,15 @@ use Carbon\Carbon;
     $faker = Faker\Factory::create();
     //echo \App\Models\Student::where('group_id', '=', 1)->with('classes')->get()[0];
     //echo \App\Models\Student::find(1)->classes()->get()->count();
+$point = \App\Models\Point::find(12);
+$point->created_by = date('Y-m-d H:i:s');
+$point->updated_by = date('Y-m-d H:i:s');
+$point->point = 5;
+$point->save();
+echo $point;
 ?>
+
+
 <main class="page">
         <div class="row expanded">
             <div class="small-12 columns">
