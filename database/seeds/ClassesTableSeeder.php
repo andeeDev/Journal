@@ -28,7 +28,7 @@ class ClassesTableSeeder extends Seeder
                 'tch_id' => $teachers->random(1)->first()->id,
                 'ctg_id' => $categories->random(1)->first()->id,
                 'sbj_id' => $subjects->random(1)->first()->id,
-                'datetime' =>  $faker->dateTimeBetween($startDate = '-1 years', $endDate = '-5 days')
+                'datetime' =>  $faker->dateTimeBetween($startDate = '-10 days', $endDate = 'now')
                     //date("Y-m-d H:i:s", strtotime('-'.rand(0,30).'days', time()))
             ]);
         }

@@ -22,15 +22,24 @@ class PointsTableSeeder extends Seeder
         $students = App\Models\Student::all();
         $classes = App\Models\Clazz::all();
 
-        foreach ($classes as $class){
-            for ($i = 1; $i <= \App\Models\Student::all()->count(); $i++) {
+        foreach ($classes as $class) {
+            for ($i = 2; $i <= \App\Models\Student::all()->count() ; $i++) {
                 DB::table('points')->insert(['classes_id' => $class->id, 'student_id' => $i,
-                    'point' => rand(0, 5),
-                    'created_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-4 month', '-3 month')->getTimestamp()),
-                    'updated_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())
+                    'point' => rand(1, 5),
+                    'created_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-14 days', '-3 days')->getTimestamp()),
+                    'updated_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-2 days', 'now')->getTimestamp())
+                    //Carbon::createFromTimeStamp($faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())
                 ]);
             }
+            DB::table('points')->insert(['classes_id' => $class->id, 'student_id' => 1,
+                /*'point' => rand(0, 5),
+                'created_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-14 days', '-3 days')->getTimestamp()),
+                'updated_by' => Carbon::createFromTimeStamp($faker->dateTimeBetween('-2 days', 'now')->getTimestamp())
+                //Carbon::createFromTimeStamp($faker->dateTimeBetween('-3 month', '0 month')->getTimestamp())*/
+            ]);
+
         }
+
 
         foreach ($classes as $class) {
             foreach ($students as $student) {

@@ -38,8 +38,6 @@ use Carbon\Carbon;
                                 <th>Сумма</th>
                             </tr>
                         </thead>
-                            {{$studentAndMark[0]->classes}}
-
                             <tbody>
                             @php ($timePoint = new DateTime( 'now' , new DateTimeZone('Europe/Kiev')))
                                 @foreach( $studentAndMark as $student )
@@ -50,13 +48,12 @@ use Carbon\Carbon;
 
                                         {{--{{$timePoint->diff(new DateTime($student->classes[0]->pivot->created_by, new DateTimeZone('Europe/Kiev')))->d}}--}}
                                         @foreach($student->classes as $class)
-                                            {{$class->pivot->point}}
+
                                             {{--{{ $timePoint->diff(new DateTime($points->created_at, new DateTimeZone('Europe/Kiev')))->format('%h %d %R') }}--}}
-                                            @if( $timePoint->diff(new DateTime($class->pivot->created_by, new DateTimeZone('Europe/Kiev')))->d < 1 )
-                                                {{--{{$class}}--}}
+                                            @if( $timePoint->diff(new DateTime($class->pivot->updated_by, new DateTimeZone('Europe/Kiev')))->d < 1 )
                                                 <td>
                                                     <div style="display:flex;justify-content: center;align-items: center;">
-                                                        <input type="text" maxlength="2" value="{{$class->pivot->point}}" data-uri="/1/1/1">
+                                                        <input type="text" name="{{sha1($class->tch_id."andee".$class->pivot->id)}}" maxlength="2" value="{{$class->pivot->point}}" data-uri="{{$class->pivot->id}}/{{$class->tch_id}}">
                                                     </div>
                                                 </td>
                                             @else
