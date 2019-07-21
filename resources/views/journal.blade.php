@@ -83,10 +83,11 @@ use Carbon\Carbon;
         </div>
     </main>
 {{--<script type="text/javascript" src="{{ asset('/js/calculateSumForStudent.js') }}"></script>--}}
+
 <?php
 
 ?>
 
 
 @include('footer')
-
+<script type="text/javascript" src="{{asset('/js/ajaxSave.js')}}"></script>
