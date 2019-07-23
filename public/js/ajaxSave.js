@@ -36,9 +36,13 @@ function get() {
     const tbody = select('tbody');
     const inputs = selectAll('input');
 
-    //console.log(tbody);
+    let s = select('#animation');
+    s.style.visibility = 'hidden';
+    console.log(s.style.visibility );
+    console.log(getComputedStyle(s)['visibility']);
     //console.log(inputs);
     tbody.onchange = e => {
+        loaderToggler();
         //log(e);
         const obj = {};
         if(e.target.tagName === 'INPUT'){
@@ -49,11 +53,13 @@ function get() {
             obj.point_id = dataUri[0];
             obj.tch_id = dataUri[1];
             check_pattern_of_datauri(e.target.dataset.uri);//
-            //log(obj);
+
             const ajax = new XMLHttpRequest();
             ajax.dataType = 'json';
             //ajax.responseType = 'json';
             ajax.onload = () => {
+                animation.
+                animation.goToAndPlay(2, true);
                 //log( ajax.getAllResponseHeaders());
                 log(ajax.response);
                 //log(ajax.getAllResponseHeaders())
@@ -105,6 +111,15 @@ function get() {
         const f = /^\d+\/\d+$/;
 
         return f.test(str)  ;
+    };
+
+    let loaderToggler = () => {
+       let loader =  select('#animation');
+        if(loader.style.visibility === 'hidden'){
+            loader.style.visibility = 'visible';
+            return;
+        }
+        loader.style.visibility = 'hidden';
     }
 }
 get();
