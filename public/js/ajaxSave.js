@@ -33,20 +33,33 @@ function get() {
     selectAll = (selector) => document.querySelectorAll(selector);
     log = (string) => console.log(string);
 
+    //log(greenLoader);
+
     const tbody = select('tbody');
     const inputs = selectAll('input');
 
+
+
+    let greenLoader = select('#bm');
+    console.log(greenLoader);
     let s = select('#animation');
-    s.style.visibility = 'hidden';
+    //select('#bm').style.visibility = 'hidden';
     console.log(s.style.visibility );
     console.log(getComputedStyle(s)['visibility']);
+    whiteLoader = select('#animation');
+    whiteLoader.classList.add('visibility-hidden');
     //console.log(inputs);
+    greenLoader.classList.add('visibility-hidden');
     tbody.onchange = e => {
-        loaderToggler();
+
+        //loaderToggler();
         //log(e);
         const obj = {};
         if(e.target.tagName === 'INPUT'){
-            //log(e.target.name + ' ' +  e.target.value + ' ' + e.target.dataset.uri);
+            whiteLoader.classList.toggle('visibility-hidden');
+            //greenLoader.classList.toggle('visibility-hidden');
+
+
             const dataUri  = e.target.dataset.uri.split('/');
             obj.name = e.target.name;
             obj.value = e.target.value;
@@ -58,12 +71,18 @@ function get() {
             ajax.dataType = 'json';
             //ajax.responseType = 'json';
             ajax.onload = () => {
-                animation.
-                animation.goToAndPlay(2, true);
-                //log( ajax.getAllResponseHeaders());
-                log(ajax.response);
-                //log(ajax.getAllResponseHeaders())
-                log(ajax.responseText)
+                setTimeout(() => whiteLoader.classList.toggle('visibility-hidden'), 200);
+                setTimeout(() => {
+                    greenLoader.classList.toggle('visibility-hidden');
+                    animation.goToAndPlay(2, true)
+                }, 300 );
+                setTimeout(() => {
+                    greenLoader.classList.toggle('visibility-hidden');
+
+                }, 2000 );
+                //whiteLoader.classList.toggle('visibility-hidden');
+                //animation.goToAndPlay(2, true);
+
 
             };
             /*ajax.onreadystatechange = () => {
@@ -113,13 +132,13 @@ function get() {
         return f.test(str)  ;
     };
 
-    let loaderToggler = () => {
+    /*let loaderToggler = () => {
        let loader =  select('#animation');
         if(loader.style.visibility === 'hidden'){
             loader.style.visibility = 'visible';
             return;
         }
         loader.style.visibility = 'hidden';
-    }
+    }*/
 }
 get();
