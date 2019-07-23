@@ -24,7 +24,8 @@ class SaveMarkController extends Controller
             'created_by' => now(),
             'updated_by' => now()
             ]);*/
-        return response()->json($point);
+        $q = "\"".sha1($jsonArray['point_id']."andee".$jsonArray['tch_id'])."\"";
+        return response()->json($request);
     }
 
 }

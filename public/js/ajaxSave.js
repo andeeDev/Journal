@@ -83,7 +83,7 @@ function get() {
                 //whiteLoader.classList.toggle('visibility-hidden');
                 //animation.goToAndPlay(2, true);
 
-
+                console.log(ajax.response);
             };
             /*ajax.onreadystatechange = () => {
                 if(ajax.onreadystatechange === 4 && ajax.status === 200){
