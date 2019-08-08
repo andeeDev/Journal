@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('/css/loaderAnimation.css') }}">
+    <link href="{{ asset('/css/ok.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cabinet.sumdu.edu.ua/public/css/cabinet.min.css">
     <!--    <link rel="stylesheet" href="../styles/common.css">-->
     <link href="{{ asset('/css/common.css') }}" rel="stylesheet">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{--    <script defer type="text/javascript" src="../js/what-input.js"></script>--}}
 </head>
 <body>

@@ -14,7 +14,7 @@ class StudentTableSeeder extends Seeder
     {
         $groups = Group::all();
         foreach ($groups as $group) {
-            factory(Student::class, 10)->create(['group_id' => $group->id]);
+            factory(Student::class, 2)->create(['group_id' => $group->id]);
         }
     }
 }
